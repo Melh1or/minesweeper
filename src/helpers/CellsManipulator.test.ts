@@ -1,11 +1,7 @@
-import { CellState, Field } from './Field';
-import {
-  incrementNeighbours,
-  getNeighboursItems,
-  checkItemInField,
-} from './CellsManipulator';
+import {CellState, Field} from './Field'
+import {incrementNeighbours, getNeighboursItems, checkItemInField} from './CellsManipulator'
 
-const { empty: e, hidden: h, bomb: b } = CellState;
+const {empty: e, hidden: h, bomb: b} = CellState
 
 describe('Check neigbours selectors', () => {
   it('With [0, 0] coords', () => {
@@ -18,8 +14,8 @@ describe('Check neigbours selectors', () => {
       bottomLeft: [1, -1],
       left: [0, -1],
       leftTop: [-1, -1],
-    });
-  });
+    })
+  })
   it('With [3, 3] coords', () => {
     expect(getNeighboursItems([3, 3])).toStrictEqual({
       top: [2, 3],
@@ -30,26 +26,26 @@ describe('Check neigbours selectors', () => {
       bottomLeft: [4, 2],
       left: [3, 2],
       leftTop: [2, 2],
-    });
-  });
-});
+    })
+  })
+})
 
 describe('checkItemInField tests', () => {
   describe('Simple cases', () => {
-    const field: Field = [[e]];
+    const field: Field = [[e]]
 
     it('Out of y range', () => {
-      expect(checkItemInField([1, 0], field)).toBe(false);
-    });
+      expect(checkItemInField([1, 0], field)).toBe(false)
+    })
 
     it('Out of x range', () => {
-      expect(checkItemInField([0, -1], field)).toBe(false);
-    });
+      expect(checkItemInField([0, -1], field)).toBe(false)
+    })
 
     it('In x and y range', () => {
-      expect(checkItemInField([0, 0], field)).toBe(true);
-    });
-  });
+      expect(checkItemInField([0, 0], field)).toBe(true)
+    })
+  })
   describe('Big field', () => {
     const field: Field = [
       [e, e, e, e, e],
@@ -57,31 +53,31 @@ describe('checkItemInField tests', () => {
       [e, e, e, e, e],
       [e, e, e, e, e],
       [e, e, e, e, e],
-    ];
+    ]
 
     it('Out of x range', () => {
-      expect(checkItemInField([5, 0], field)).toBe(false);
-    });
+      expect(checkItemInField([5, 0], field)).toBe(false)
+    })
 
     it('Out of x range with negative index', () => {
-      expect(checkItemInField([-1, 0], field)).toBe(false);
-    });
+      expect(checkItemInField([-1, 0], field)).toBe(false)
+    })
 
     it('Out of y range', () => {
-      expect(checkItemInField([0, 5], field)).toBe(false);
-    });
+      expect(checkItemInField([0, 5], field)).toBe(false)
+    })
 
     it('In x and y range', () => {
-      expect(checkItemInField([3, 4], field)).toBe(true);
-    });
-  });
-});
+      expect(checkItemInField([3, 4], field)).toBe(true)
+    })
+  })
+})
 
 describe('Check Increment Neibours', () => {
   describe('Simple cases', () => {
     it('Field with only one item', () => {
-      expect(incrementNeighbours([0, 0], [[b]])).toStrictEqual([[b]]);
-    });
+      expect(incrementNeighbours([0, 0], [[b]])).toStrictEqual([[b]])
+    })
     it('Field 2x2 with one mine', () => {
       expect(
         incrementNeighbours(
@@ -94,8 +90,8 @@ describe('Check Increment Neibours', () => {
       ).toStrictEqual([
         [b, 1],
         [1, 1],
-      ]);
-    });
+      ])
+    })
     it('Field 2x2 with two mines', () => {
       expect(
         incrementNeighbours(
@@ -108,9 +104,9 @@ describe('Check Increment Neibours', () => {
       ).toStrictEqual([
         [b, 1],
         [1, b],
-      ]);
-    });
-  });
+      ])
+    })
+  })
   describe('3x3 cases', () => {
     it('Field 3x3 with one centered mine', () => {
       expect(
@@ -126,8 +122,8 @@ describe('Check Increment Neibours', () => {
         [1, 1, 1],
         [1, b, 1],
         [1, 1, 1],
-      ]);
-    });
+      ])
+    })
     it('Field 3x3 with two mines', () => {
       expect(
         incrementNeighbours(
@@ -142,8 +138,8 @@ describe('Check Increment Neibours', () => {
         [1, 2, b],
         [1, b, 2],
         [1, 1, 1],
-      ]);
-    });
+      ])
+    })
     it('Field 3x3 as syntetic case with neighbors cells is reached max possible bombs', () => {
       expect(
         incrementNeighbours(
@@ -158,9 +154,9 @@ describe('Check Increment Neibours', () => {
         [1, 2, b],
         [8, b, 2],
         [8, 8, 8],
-      ]);
-    });
-  });
+      ])
+    })
+  })
   describe('9x9 cases', () => {
     it('Field 9x9 with 7 mines', () => {
       expect(
@@ -188,8 +184,8 @@ describe('Check Increment Neibours', () => {
         [0, 1, 1, 2, 9, 1, 0, 0, 0],
         [0, 0, 0, 1, 1, 1, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-      ]);
-    });
+      ])
+    })
     it('Field 9x9 with 11 mines', () => {
       expect(
         incrementNeighbours(
@@ -216,7 +212,7 @@ describe('Check Increment Neibours', () => {
         [0, 2, 2, 4, 9, 2, 1, 1, 1],
         [0, 1, 9, 2, 1, 1, 1, 9, 1],
         [0, 1, 1, 1, 0, 0, 1, 1, 1],
-      ]);
-    });
-  });
-});
+      ])
+    })
+  })
+})

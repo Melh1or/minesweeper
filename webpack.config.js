@@ -16,21 +16,21 @@ module.exports = {
       {
         test: /\.(js|ts)x?$/,
         exclude: /(node_modules|bower_components)/,
-        use: 'babel-loader'
+        use: 'babel-loader',
       },
       {
         test: /.css$/i,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(png|jpg|gif|svg)$/i,
         type: 'asset/resource',
       },
-    ]
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html'
-    })
+      template: './public/index.html',
+    }),
   ],
 }

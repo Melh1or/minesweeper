@@ -1,14 +1,11 @@
-import { Cell, Coords, Field } from './Field';
+import {Cell, Coords, Field} from './Field'
 
 /**
  * Get neighbour cells indexes
  * @param {Coords} coords
  * @returns {Record<string, [number, number]>}
  */
-export const getNeighboursItems = ([y, x]: Coords): Record<
-  string,
-  [number, number]
-  > => ({
+export const getNeighboursItems = ([y, x]: Coords): Record<string, [number, number]> => ({
   top: [y - 1, x],
   topRight: [y - 1, x + 1],
   right: [y, x + 1],
@@ -17,7 +14,7 @@ export const getNeighboursItems = ([y, x]: Coords): Record<
   bottomLeft: [y + 1, x - 1],
   left: [y, x - 1],
   leftTop: [y - 1, x - 1],
-});
+})
 
 /**
  * Check item in the field
@@ -25,8 +22,8 @@ export const getNeighboursItems = ([y, x]: Coords): Record<
  * @param {Field} field
  * @returns {boolean}
  */
-export const checkItemInField = ([y, x]: Coords, { length }: Field): boolean =>
-  y >= 0 && x >= 0 && length - y > 0 && length - x > 0;
+export const checkItemInField = ([y, x]: Coords, {length}: Field): boolean =>
+  y >= 0 && x >= 0 && length - y > 0 && length - x > 0
 
 /**
  * Increment neighbour items for cell with coords
@@ -35,16 +32,16 @@ export const checkItemInField = ([y, x]: Coords, { length }: Field): boolean =>
  * @returns {Cell}
  */
 export const incrementNeighbours = (coords: Coords, field: Field): Field => {
-  const items = getNeighboursItems(coords);
+  const items = getNeighboursItems(coords)
 
   for (const [y, x] of Object.values(items)) {
     if (checkItemInField([y, x], field)) {
-      const cell = field[y][x];
+      const cell = field[y][x]
       if (cell < 8) {
-        field[y][x] = (cell + 1) as Cell;
+        field[y][x] = (cell + 1) as Cell
       }
     }
   }
 
-  return field;
-};
+  return field
+}
