@@ -1,8 +1,12 @@
 import React, {FC} from 'react'
 import './app.css'
 
-import {Legend} from './components/Top/Legend'
+import {Top} from './components/Top'
 
 export const App: FC = () => {
-  return <Legend />
+  return (
+    <Top feature='Flag' firstAction='ctrl' secondAction='click'>
+      Minesweeper
+    </Top>
+  )
 }

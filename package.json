@@ -9,10 +9,11 @@
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch --mode=development",
-    "serve": "webpack serve --mode=development",
+    "start": "webpack serve --mode=development",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "npx eslint ./ --ext .js,.jsx,.ts,.ts --ignore-path .gitignore --fix"
+    "lint": "npx eslint ./ --ext .js,.jsx,.ts,.ts --ignore-path .gitignore --fix",
+    "chromatic": "npx chromatic --project-token=761be075a63b"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,9 @@
     "react",
     "redux"
   ],
-  "author": "Serhii Trachuk",
+  "author": {
+    "name": "Serhii Trachuk"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Melh1or/minesweeper/issues"
@@ -42,12 +45,15 @@
     "@storybook/manager-webpack5": "^6.5.10",
     "@storybook/react": "^6.5.10",
     "@storybook/testing-library": "0.0.13",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
     "@types/jest": "^29.0.0",
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "babel-loader": "^8.2.5",
+    "chromatic": "^6.9.0",
     "css-loader": "^6.7.1",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
@@ -72,5 +78,7 @@
     "@emotion/styled": "^11.10.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "minesweeper@1.0.0"
 }
